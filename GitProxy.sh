@@ -25,7 +25,7 @@ changeGitGlobalProxy() {
 # 设置代理
 setProxy() {
   read -p "请输入您的Git代理地址: " proxy_url
-  if  [ ! -n "$proxy_url" ];then
+  if [ ! -n "$proxy_url" ];then
     proxy_url=$default_proxy
   fi
   git config --global http.proxy $proxy_url
