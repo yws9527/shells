@@ -1,10 +1,13 @@
 #!/bin/sh
 
 # 注意！！！！！！！！！
-# 当前脚本需要jq工具，在使用之前需要确保已安装(在项目根目录/bin已提供)
-# 安装命令：curl -L -o /usr/bin/jq.exe https://github.com/stedolan/jq/releases/latest/download/jq-win64.exe
-# 检测命令：jq --version
-# windows用户建议安装在Git目录：D:\xxx\Git\usr\bin\
+# 当前脚本需要jq工具，在使用之前需要确保已安装
+# 1. 在线安装
+# 安装jq: curl -L -o /usr/bin/jq.exe https://github.com/stedolan/jq/releases/latest/download/jq-win64.exe
+# 2. 离线安装
+# 使用我仓库里提供的:/bin/jq.exe
+# windows用户建议将jq.exe放在Git目录：D:\xxx\Git\usr\bin\
+# 检测jq：jq --version
 
 host="https://unpkg.com"
 
