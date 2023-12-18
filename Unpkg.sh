@@ -13,7 +13,7 @@ host="https://unpkg.com"
 
 root_dir="./packages"
 
-package_name="vant"
+package_name="axios"
 
 package_ver=""
 
