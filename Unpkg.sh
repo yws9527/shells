@@ -13,7 +13,7 @@ host="https://unpkg.com"
 
 root_dir="./packages"
 
-package_name="axios"
+package_name=""
 
 package_ver=""
 
@@ -37,6 +37,18 @@ function getTargetVer() {
 
 function generateFile() {
   curl -sL $1 -o $2
+  echo "$1"
+}
+
+function setPackage() {
+  read -p "请输入你要离线的包名: " name
+  if [ ! -n "$name" ];then
+    echo "包名为空，程序退出！"
+    exit
+  else
+    package_name=$name
+    echo -e "\e[93m即将开始下载: $name\e[0m"
+  fi
 }
 
 function getTargetFiles() {
@@ -56,6 +68,9 @@ function getTargetFiles() {
   done
 }
 
+# 交互式设置包名
+setPackage
+
 # 获取package首页内容
 package_main_page=$(fetchCtx $host/$package_name/)
 
@@ -63,13 +78,10 @@ package_main_page=$(fetchCtx $host/$package_name/)
 package_ver=$(getTargetVer ".packageVersion")
 
 # 根据package最新版本号获取包的存放路径
-package_dir=$root_dir/$package_name/$package_ver
+package_dir=$root_dir/$package_name@$package_ver
 
 # 生成package目录
 generateDir "$package_dir"
 
 # 递归获取package文件
 getTargetFiles "$package_main_page" ".target|.details"
-
-
-# echo "获取的内容：$package_main_page"
