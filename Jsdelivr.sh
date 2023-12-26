@@ -28,7 +28,7 @@ setPackage() {
 }
 
 function get_package_ver() {
-  echo $(curl -sL $host/v1/packages/npm/$package_name 2>/dev/null | grep -Po 'latest[": ]+\K[^"]+')
+  echo $(curl -sL $host/v1/packages/npm/$package_name 2>/dev/null | jq -r '.tags|.latest')
 }
 
 function get_package_list() {
